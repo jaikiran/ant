@@ -20,13 +20,13 @@
     <target name="setUp">
         <!-- This "output" property is set on the project in the Java test case (ExecStreamRedirectorTest) -->
         <mkdir dir="${output}"/>
-        <condition property="dir.listing.command" value="ls" else="cmd.exe /c dir">
+        <condition property="dir.listing.command" value="ls" else="cmd.exe">
             <os family="unix"/>
         </condition>
         <condition property="dir.to.ls" value="/usr/bin" else="${user.dir}">
             <os family="unix"/>
         </condition>
-        <condition property="dir.listing.command.arg" value="-l" else="/n">
+        <condition property="dir.listing.command.arg" value="-l" else="dir">
             <os family="unix"/>
         </condition>
         <property name="dir.to.ls" value="/usr/bin"/>
