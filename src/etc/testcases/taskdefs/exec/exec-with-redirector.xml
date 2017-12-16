@@ -20,7 +20,7 @@
     <target name="setUp">
         <!-- This "output" property is set on the project in the Java test case (ExecStreamRedirectorTest) -->
         <mkdir dir="${output}"/>
-        <condition property="dir.listing.command" value="ls" else="dir">
+        <condition property="dir.listing.command" value="ls" else="cmd.exe /c dir">
             <os family="unix"/>
         </condition>
         <condition property="dir.to.ls" value="/usr/bin" else="${user.dir}">
@@ -43,7 +43,6 @@
             <exec executable="${dir.listing.command}" dir="${basedir}" failonerror="true" logerror="true">
                 <redirector output="${output}/ls2.txt" error="${output}/ls2.err" alwayslog="true"/>
                 <arg value="${dir.listing.command.arg}"/>
-
                 <arg value="${dir.to.ls}"/>
             </exec>
             <exec executable="${dir.listing.command}" dir="${basedir}" failonerror="true" logerror="true">
