@@ -369,4 +369,16 @@
     </junit>
   </target>
 
+
+    <target name="bz-62764">
+        <junit fork="yes" haltonerror="true" haltonfailure="true"
+               showoutput="${showoutput}">
+            <test name="org.example.junit.Output" />
+            <classpath>
+                <pathelement location="${output}/*"/>
+                <path refid="test"/>
+            </classpath>
+        </junit>
+    </target>
+
 </project>

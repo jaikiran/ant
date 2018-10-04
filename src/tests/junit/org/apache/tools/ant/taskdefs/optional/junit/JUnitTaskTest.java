@@ -119,6 +119,11 @@ public class JUnitTaskTest {
         assertResultFilesExist("testBatchTestForkOnceToDir", ".xml");
     }
 
+    @Test
+    public void testBz62764() {
+        buildRule.executeTarget("bz-62764");
+    }
+
     /** Bugzilla Report 32973 */
     @Test
     public void testBatchTestForkOnceExtension() {
