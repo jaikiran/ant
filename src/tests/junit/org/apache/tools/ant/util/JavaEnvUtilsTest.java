@@ -31,6 +31,15 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeFalse;
 import static org.junit.Assume.assumeTrue;
 
+import sun.misc.Unsafe;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.nio.ByteBuffer;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
+
+
 /**
  * TestCase for JavaEnvUtils.
  *
@@ -145,4 +154,15 @@ public class JavaEnvUtilsTest {
         assertTrue(JavaEnvUtils.isAtLeastJavaVersion(JavaEnvUtils.JAVA_9));
     }
 
+    @Test
+	public void java11TestUnsafe() {
+		try {
+            Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
+            theUnsafe.setAccessible(true);
+            System.out.println("got unsafe");
+            theUnsafe.get(null);
+        } catch (Throwable t) {
+            throw new RuntimeException("JDK did not allow accessing unsafe", t);
+        }
+    }
 }
