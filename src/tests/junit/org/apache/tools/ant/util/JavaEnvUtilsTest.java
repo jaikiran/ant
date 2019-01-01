@@ -157,6 +157,7 @@ public class JavaEnvUtilsTest {
     @Test
 	public void java11TestUnsafe() {
 		try {
+			System.out.println("Java version " + System.getProperty("java.specification.version"));
             Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
             theUnsafe.setAccessible(true);
             System.out.println("got unsafe");
