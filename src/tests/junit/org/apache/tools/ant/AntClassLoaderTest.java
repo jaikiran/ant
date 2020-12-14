@@ -63,6 +63,9 @@ public class AntClassLoaderTest {
 
     @After
     public void tearDown() {
+        System.out.println("Full log " + buildRule.getFullLog());
+        System.out.println("Full sysout " + buildRule.getOutput());
+        System.out.println("Full syserr " + buildRule.getError());
         if (loader != null) {
             loader.cleanup();
         }
