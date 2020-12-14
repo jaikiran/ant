@@ -22,7 +22,7 @@
 
   <target name="tearDown">
     <delete dir="${input}"/>
-    <delete dir="${output}"/>
+<!--    <delete dir="${output}"/>-->
   </target>
   
 </project>
