@@ -1919,7 +1919,7 @@ ${antunit.reports}
     <property name="junit.excludes" value=""/>
 
     <test-junit>
-      <formatter type="brief" usefile="false"/>
+      <formatter type="brief" usefile="true"/>
 
       <batchtest todir="${build.junit.xml}" unless="hasFailingTests">
         <fileset dir="${src.junit}"
