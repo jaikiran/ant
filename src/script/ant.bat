@@ -1,4 +1,4 @@
-rem @echo off
+@echo on
 
 REM  Licensed to the Apache Software Foundation (ASF) under one or more
 REM  contributor license agreements.  See the NOTICE file distributed with
@@ -123,6 +123,7 @@ goto checkJikes
 if "%_JAVACMD%" == "" set _JAVACMD=java.exe
 
 :setSecurityManagerOpt
+echo "Checking Java version"
 "%_JAVACMD%" -XshowSettings:properties 2>&1 | find "java.specification.version = 18"
 set err_level="%ErrorLevel%"
 if "%err_level%" == "0" (
