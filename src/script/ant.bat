@@ -117,7 +117,7 @@ set _JAVACMD=%JAVACMD%
 if "%JAVA_HOME%" == "" goto noJavaHome
 if not exist "%JAVA_HOME%\bin\java.exe" goto noJavaHome
 if "%_JAVACMD%" == "" set _JAVACMD=%JAVA_HOME%\bin\java.exe
-goto checkJikes
+goto setSecurityManagerOpt
 
 :noJavaHome
 if "%_JAVACMD%" == "" set _JAVACMD=java.exe
