@@ -1,4 +1,4 @@
-@echo off
+rem @echo off
 
 REM  Licensed to the Apache Software Foundation (ASF) under one or more
 REM  contributor license agreements.  See the NOTICE file distributed with
@@ -124,9 +124,13 @@ if "%_JAVACMD%" == "" set _JAVACMD=java.exe
 
 :setSecurityManagerOpt
 "%_JAVACMD%" -XshowSettings:properties 2>&1 | find "java.specification.version = 18"
-if "%ErrorLevel%" == "0" (
+set err_level="%ErrorLevel%"
+if "%err_level%" == "0" (
     rem This is Java 18, so set -Djava.security.manager=allow
     set ANT_OPTS="%ANT_OPTS% -Djava.security.manager=allow"
+    echo "Set ant opts to %ANT_OPTS%"
+) else (
+    echo "Error level was %err_level%"
 )
 
 :checkJikes
