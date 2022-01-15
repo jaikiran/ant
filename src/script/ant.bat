@@ -125,7 +125,7 @@ if "%_JAVACMD%" == "" set _JAVACMD=java.exe
 :setSecurityManagerOpt
 echo "Checking Java version"
 "%_JAVACMD%" -XshowSettings:properties 2>&1 | find "java.specification.version = 18"
-set err_level="%ErrorLevel%"
+set err_level=%ErrorLevel%
 if %err_level% == 0 (
     rem This is Java 18, so set -Djava.security.manager=allow
     set ANT_OPTS="%ANT_OPTS% -Djava.security.manager=allow"
