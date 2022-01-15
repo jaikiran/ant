@@ -1,0 +1,17 @@
+<project default="download-jdk">
+	<property environment="env"/>
+	<target name="download-jdk" depends="jdk17, jdk18"/>
+
+	<target name="jdk17" if="env.JDK_17_DOWNLOAD_URL">
+		<echo message="Downloding ${env.JDK_17_DOWNLOAD_URL} to ${user.dir}"/>
+		<get src="${env.JDK_17_DOWNLOAD_URL}" dest="jdk.zip"/>
+		<unzip src="jdk.zip" dest="java-latest-ea"/>
+	</target>
+
+	<target name="jdk18" if="env.JDK_18_DOWNLOAD_URL">
+		<echo message="Downloding ${env.JDK_18_DOWNLOAD_URL} to ${user.dir}"/>
+		<get src="${env.JDK_18_DOWNLOAD_URL}" dest="jdk.zip"/>
+		<unzip src="jdk.zip" dest="java-latest-ea"/>
+	</target>
+
+</project>
