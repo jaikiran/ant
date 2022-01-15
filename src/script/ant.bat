@@ -126,12 +126,10 @@ if "%_JAVACMD%" == "" set _JAVACMD=java.exe
 echo "Checking Java version"
 "%_JAVACMD%" -XshowSettings:properties 2>&1 | find "java.specification.version = 18"
 if %errorlevel% EQU 0 (
-    rem This is Java 18, so set -Djava.security.manager=allow
-    set ANT_OPTS="%ANT_OPTS% -Djava.security.manager=allow"
-    echo "Set ant opts to %ANT_OPTS%"
-) else (
-    echo "Error level was %err_level%"
+rem This is Java 18, so set -Djava.security.manager=allow
+set ANT_OPTS="%ANT_OPTS% -Djava.security.manager=allow"
 )
+echo "Set ant opts to %ANT_OPTS%"
 
 :checkJikes
 if not "%JIKESPATH%"=="" goto runAntWithJikes
