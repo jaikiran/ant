@@ -1,17 +1,25 @@
 <project default="download-jdk">
 	<property environment="env"/>
-	<target name="download-jdk" depends="jdk17, jdk18"/>
-
-	<target name="jdk17" if="env.JDK_17_DOWNLOAD_URL">
-		<echo message="Downloding ${env.JDK_17_DOWNLOAD_URL} to ${user.dir}"/>
-		<get src="${env.JDK_17_DOWNLOAD_URL}" dest="jdk.zip"/>
+	<target name="download-jdk" depends="check-file-type, download-extract-zip, download-extract-tar"/>
+	<target name="check-file-type">
+		<condition property="zip-artifact">
+			<!-- check if it ends with .zip -->
+  			<matches string="${env.JDK_DOWNLOAD_URL}" pattern="\.zip$"/>
+		</condition>
+		<condition property="tar-artifact">
+			<!-- check if it ends with .tar.gz -->
+			<matches string="${env.JDK_DOWNLOAD_URL}" pattern="\.tar.gz$"/>
+		</condition>
+	</target>
+	<target name="download-extract-zip" if="zip-artifact">
+		<echo message="Downloading zip file from ${env.JDK_DOWNLOAD_URL}"/>
+		<get src="${env.JDK_DOWNLOAD_URL}" dest="jdk.zip"/>
 		<unzip src="jdk.zip" dest="java-latest-ea"/>
 	</target>
-
-	<target name="jdk18" if="env.JDK_18_DOWNLOAD_URL">
-		<echo message="Downloding ${env.JDK_18_DOWNLOAD_URL} to ${user.dir}"/>
-		<get src="${env.JDK_18_DOWNLOAD_URL}" dest="jdk.zip"/>
-		<unzip src="jdk.zip" dest="java-latest-ea"/>
+	<target name="download-extract-tar" if="tar-artifact">
+		<echo message="Downloading tar.gz file from ${env.JDK_DOWNLOAD_URL}"/>
+		<get src="${env.JDK_DOWNLOAD_URL}" dest="jdk.tar.gz"/>
+		<untar src="jdk.tar.gz" dest="java-latest-ea" compression="gzip"/>
 	</target>
 
 </project>
