@@ -13,13 +13,13 @@
 	</target>
 	<target name="download-extract-zip" if="zip-artifact">
 		<echo message="Downloading zip file from ${env.JDK_DOWNLOAD_URL}"/>
-		<get src="${env.JDK_DOWNLOAD_URL}" dest="jdk.zip"/>
-		<unzip src="jdk.zip" dest="java-latest-ea"/>
+		<get src="${env.JDK_DOWNLOAD_URL}" dest="${basedir}/jdk.zip"/>
+		<unzip src="jdk.zip" dest="${basedir}/java-latest-ea"/>
 	</target>
 	<target name="download-extract-tar" if="tar-artifact">
 		<echo message="Downloading tar.gz file from ${env.JDK_DOWNLOAD_URL}"/>
-		<get src="${env.JDK_DOWNLOAD_URL}" dest="jdk.tar.gz"/>
-		<untar src="jdk.tar.gz" dest="java-latest-ea" compression="gzip"/>
+		<get src="${env.JDK_DOWNLOAD_URL}" dest="${basedir}/jdk.tar.gz"/>
+		<untar src="jdk.tar.gz" dest="${basedir}/java-latest-ea" compression="gzip"/>
 	</target>
 
 </project>
