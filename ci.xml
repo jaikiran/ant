@@ -22,11 +22,7 @@
 		<untar src="jdk.tar.gz" dest="${basedir}/java-latest-ea" compression="gzip"/>
 		<!-- restore permission on the extracted tar's bin directory contents -->
 		<echo message="restoring permissions of files in directory ${basedir}/java-latest-ea/**/bin/*"/>
-		<chmod dir="${basedir}/java-latest-ea/" perm="a+x">
-			<fileset dir="**/bin/">
-				<include name="*"/>
-			</fileset>
-		</chmod>
+		<chmod dir="${basedir}/java-latest-ea/" perm="a+x" includes="**/bin/*"/>
 	</target>
 
 </project>
