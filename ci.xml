@@ -21,7 +21,7 @@
 		<get src="${env.JDK_DOWNLOAD_URL}" dest="${basedir}/jdk.tar.gz"/>
 		<untar src="jdk.tar.gz" dest="${basedir}/java-latest-ea" compression="gzip"/>
 		<!-- restore permission on the extracted tar's bin directory contents -->
-		<chmod dir="${basedir}/java-latest-ea/" includes="**/bin/*" perm="a+x"/>
+		<chmod dir="${basedir}/java-latest-ea/" includes="**/bin/*" perm="a+rwx"/>
 	</target>
 
 </project>
