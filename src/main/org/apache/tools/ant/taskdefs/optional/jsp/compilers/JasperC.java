@@ -62,7 +62,7 @@ public class JasperC extends DefaultJspCompilerAdapter {
     @Override
     public boolean execute()
         throws BuildException {
-        getJspc().log("Using jasper compiler", Project.MSG_ERR);
+        getJspc().log("Using jasper compiler", Project.MSG_VERBOSE);
         CommandlineJava cmd = setupJasperCommand();
 
         try {
@@ -78,7 +78,6 @@ public class JasperC extends DefaultJspCompilerAdapter {
                                  Project.MSG_DEBUG);
             }
             java.setClasspath(p);
-            java.setOutputproperty("jspc.out");
             java.setDir(getProject().getBaseDir());
             java.setClassname("org.apache.jasper.JspC");
             //this is really irritating; we need a way to set stuff
@@ -99,13 +98,6 @@ public class JasperC extends DefaultJspCompilerAdapter {
             throw new BuildException("Error running jsp compiler: ",
                                          ex, getJspc().getLocation());
         } finally {
-            String processOut = getProject().getProperty("jspc.out");
-            if (processOut != null) {
-                System.out.println("process out: ");
-                System.out.println(processOut);
-            } else {
-                System.out.println("NO process out");
-            }
             getJspc().deleteEmptyJavaFiles();
         }
     }

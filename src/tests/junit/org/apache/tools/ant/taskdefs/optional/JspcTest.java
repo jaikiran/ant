@@ -26,7 +26,6 @@ import org.apache.tools.ant.taskdefs.optional.jsp.JspMangler;
 import org.apache.tools.ant.taskdefs.optional.jsp.JspNameMangler;
 import org.apache.tools.ant.taskdefs.optional.jsp.compilers.JspCompilerAdapter;
 import org.apache.tools.ant.taskdefs.optional.jsp.compilers.JspCompilerAdapterFactory;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -57,11 +56,6 @@ public class JspcTest {
     @Before
     public void setUp() {
         buildRule.configureProject("src/etc/testcases/taskdefs/optional/jspc.xml");
-     }
-
-     @After
-     public void after() {
-        System.out.println("Build log: " + buildRule.getFullLog());
      }
 
     @Test
