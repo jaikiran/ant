@@ -123,7 +123,7 @@ goto setSecurityManagerOpt
 if "%_JAVACMD%" == "" set _JAVACMD=java.exe
 
 :setSecurityManagerOpt
-for /F "delims=" %%a in ('"%_JAVACMD%" -XshowSettings:properties') do @set java_cmd_output=%%a
+for /f "usebackq" "delims=" %%a in ('"%_JAVACMD%" -XshowSettings:properties 2>&1') do @set java_cmd_output=%%a
 echo %java_cmd_output%
 echo %java_cmd_output% | find "java.specification.version = 18"
 if %errorlevel% EQU 0 (
