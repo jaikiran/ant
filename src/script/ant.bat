@@ -124,12 +124,12 @@ if "%_JAVACMD%" == "" set _JAVACMD=java.exe
 
 :setSecurityManagerOpt
 for /F "delims=" %%a in ('"%_JAVACMD%" -XshowSettings:properties 2>&1') do @set java_cmd_output=%%a
-echo %java_cmd_output% 2>&1 | find "java.specification.version = 18"
+echo %java_cmd_output% | find "java.specification.version = 18"
 if %errorlevel% EQU 0 (
 rem This is Java 18, so set -Djava.security.manager=allow
 set ANT_OPTS=%ANT_OPTS% -Djava.security.manager=allow
 ) else (
-echo %java_cmd_output% 2>&1 | find "java.specification.version = 19"
+echo %java_cmd_output% | find "java.specification.version = 19"
 if %errorlevel% EQU 0 (
 rem This is Java 19, so set -Djava.security.manager=allow
 set ANT_OPTS=%ANT_OPTS% -Djava.security.manager=allow
