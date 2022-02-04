@@ -19,7 +19,7 @@
 	<target name="download-extract-tar" if="tar-artifact">
 		<echo message="Downloading tar.gz file from ${env.JDK_DOWNLOAD_URL}"/>
 		<get src="${env.JDK_DOWNLOAD_URL}" dest="${user.home}/jdk.tar.gz"/>
-		<untar src="jdk.tar.gz" dest="${user.home}/java-latest-ea" compression="gzip"/>
+		<untar src="${user.home}/jdk.tar.gz" dest="${user.home}/java-latest-ea" compression="gzip"/>
 		<!-- restore permission on the extracted tar's bin directory contents -->
 <!-- 		<echo message="restoring permissions of files in directory ${basedir}/java-latest-ea/**/bin/*"/>
 		<chmod dir="${basedir}/java-latest-ea/" perm="a+x" includes="**/bin/*"/>
