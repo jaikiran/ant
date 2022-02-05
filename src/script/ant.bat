@@ -1,4 +1,5 @@
 @echo on
+SETLOCAL EnableDelayedExpansion
 
 REM  Licensed to the Apache Software Foundation (ASF) under one or more
 REM  contributor license agreements.  See the NOTICE file distributed with
@@ -131,7 +132,7 @@ if %errorlevel% EQU 0 (
     set ANT_OPTS=%ANT_OPTS% -Djava.security.manager=allow
 ) else (
     echo "checking java 19"
-    "%_JAVACMD%" -XshowSettings:properties 2>&1 | find "java.specification.version = 19" || rem
+    "%_JAVACMD%" -XshowSettings:properties 2>&1 | find "java.specification.version = 19"
     if %errorlevel% EQU 0 (
         echo "set java 19"
         rem This is Java 19, so set -Djava.security.manager=allow
