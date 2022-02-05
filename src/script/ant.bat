@@ -131,6 +131,8 @@ if %errorlevel% EQU 0 (
     set ANT_OPTS=%ANT_OPTS% -Djava.security.manager=allow
 ) else (
     echo "checking java 19"
+    rem reset the errorlevel, because apparently .bat scripts don't reset the errorlevel after each command!
+    (call )
     "%_JAVACMD%" -XshowSettings:properties 2>&1 | find "java.specification.version = 19"
     if %errorlevel% EQU 0 (
         echo "set java 19"
