@@ -123,7 +123,6 @@ goto setSecurityManagerOpt
 if "%_JAVACMD%" == "" set _JAVACMD=java.exe
 
 :setSecurityManagerOpt
-SETLOCAL EnableDelayedExpansion
 "!_JAVACMD!" -XshowSettings:properties 2>&1 | find "java.specification.version = 18"
 if !errorlevel! EQU 0 (
     echo "set java 18"
@@ -139,7 +138,6 @@ if !errorlevel! EQU 0 (
         echo "ANT opts is !ANT_OPTS!"
     )
 )
-endlocal
 echo "ANT opts is %ANT_OPTS%"
 
 :checkJikes
