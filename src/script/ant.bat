@@ -124,14 +124,14 @@ if "%_JAVACMD%" == "" set _JAVACMD=java.exe
 
 :setSecurityManagerOpt
 setlocal EnableDelayedExpansion
-"!_JAVACMD!" -XshowSettings:properties 2>&1 | find "java.specification.version = 18"
+"!_JAVACMD!" -XshowSettings:properties 2>&1 | find "java.specification.version = 18" >nul 2>&1
 if !errorlevel! EQU 0 (
     echo "set java 18"
     rem This is Java 18, so set -Djava.security.manager=allow
     set JAVA_SECMGR_OPT=-Djava.security.manager=allow
     echo "Sec manager opt !JAVA_SECMGR_OPT!"
 ) else (
-    "!_JAVACMD!" -XshowSettings:properties 2>&1 | find "java.specification.version = 19"
+    "!_JAVACMD!" -XshowSettings:properties 2>&1 | find "java.specification.version = 19" >nul 2>&1
     if !errorlevel! EQU 0 (
         echo "set java 19"
         rem This is Java 19, so set -Djava.security.manager=allow
