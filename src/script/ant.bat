@@ -124,19 +124,19 @@ if "%_JAVACMD%" == "" set _JAVACMD=java.exe
 
 :setSecurityManagerOpt
 SETLOCAL EnableDelayedExpansion
-"%_JAVACMD%" -XshowSettings:properties 2>&1 | find "java.specification.version = 18"
+"!_JAVACMD!" -XshowSettings:properties 2>&1 | find "java.specification.version = 18"
 if !errorlevel! EQU 0 (
     echo "set java 18"
     rem This is Java 18, so set -Djava.security.manager=allow
-    set ANT_OPTS=%ANT_OPTS% -Djava.security.manager=allow
-    echo "ANT opts is %ANT_OPTS%"
+    set ANT_OPTS=!ANT_OPTS! -Djava.security.manager=allow
+    echo "ANT opts is !ANT_OPTS!"
 ) else (
-    "%_JAVACMD%" -XshowSettings:properties 2>&1 | find "java.specification.version = 19"
+    "!_JAVACMD!" -XshowSettings:properties 2>&1 | find "java.specification.version = 19"
     if !errorlevel! EQU 0 (
         echo "set java 19"
         rem This is Java 19, so set -Djava.security.manager=allow
-        set ANT_OPTS=%ANT_OPTS% -Djava.security.manager=allow
-        echo "ANT opts is %ANT_OPTS%"
+        set ANT_OPTS=!ANT_OPTS! -Djava.security.manager=allow
+        echo "ANT opts is !ANT_OPTS!"
     )
 )
 endlocal
