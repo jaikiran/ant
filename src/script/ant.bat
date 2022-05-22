@@ -135,7 +135,7 @@ if !errorlevel! EQU 0 (
         set JAVA_SECMGR_OPT=-Djava.security.manager=allow
     )
 )
-endlocal & set "ANT_OPTS=%ANT_OPTS% %JAVA_SECMGR_OPT%"
+endlocal & set "ANT_OPTS=%ANT_OPTS% %JAVA_SECMGR_OPT% --enable-preview"
 
 :checkJikes
 if not "%JIKESPATH%"=="" goto runAntWithJikes
