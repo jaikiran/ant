@@ -58,8 +58,8 @@ if "%CLASSPATH%"=="""" set _USE_CLASSPATH=no
 if "%CLASSPATH%"=="" set _USE_CLASSPATH=no
 
 rem allow calling System.setSecurityManager at runtime
-set ANT_OPTS="%ANT_OPTS% -Djava.security.manager=allow"
-echo "ANT_OPTS is set to %ANT_OPTS%"
+set "ANT_OPTS=%ANT_OPTS% -Djava.security.manager=allow"
+echo ANT_OPTS is set to %ANT_OPTS%
 
 rem Slurp the command line arguments. This loop allows for an unlimited number
 rem of arguments (up to the command line limit, anyway).
