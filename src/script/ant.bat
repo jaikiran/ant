@@ -123,7 +123,7 @@ goto checkJikes
 if "%_JAVACMD%" == "" set _JAVACMD=java.exe
 
 rem allow calling System.setSecurityManager at runtime
-"ANT_OPTS=%ANT_OPTS% -Djava.security.manager=allow"
+set ANT_OPTS="%ANT_OPTS%" -Djava.security.manager=allow
 
 :checkJikes
 if not "%JIKESPATH%"=="" goto runAntWithJikes
