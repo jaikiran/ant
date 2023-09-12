@@ -32,7 +32,7 @@ if "" == "%JAVAC%" if "" == "%JAVA_HOME%" set JAVAC=javac
 if "" == "%JAVAC%"                        set JAVAC=%JAVA_HOME%\bin\javac
 
 echo.
-echo ... Bootstrapping Ant Distribution with JAVA_HOME set to "%JAVA_HOME%" and javac set to "%JAVAC%"
+echo ... Bootstrapping Ant Distribution
 
 if exist bootstrap\nul rmdir/s/q bootstrap
 if exist build\nul rmdir/s/q build
