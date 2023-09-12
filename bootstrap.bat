@@ -46,6 +46,7 @@ set TOOLS=src\main\org\apache\tools
 set CLASSDIR=build\classes
 
 SET CLASSPATH=%LOCALCLASSPATH%;%CLASSDIR%;src\main;%CLASSPATH%
+echo "previous bootstrap javac opts is %BOOTJAVAC_OPTS%"
 SET BOOTJAVAC_OPTS="-proc:none %BOOTJAVAC_OPTS%"
 
 echo JAVA_HOME=%JAVA_HOME%
@@ -66,6 +67,7 @@ echo "public class JavacVersionCheck {}" > %CLASSDIR%\JavacVersionCheck.java
 IF %ERRORLEVEL% EQU 0 SET JAVAC_RELEASE_VERSION="--release 8"
 DEL %CLASSDIR%\JavacVersionCheck.java %CLASSDIR%\JavacVersionCheck.class >nul 2>&1
 echo.
+echo "bootstrap javac opts is %BOOTJAVAC_OPTS%"
 IF %JAVAC_RELEASE_VERSION% == "" (
   echo ... Compiling Ant Classes
   "%JAVAC%" %BOOTJAVAC_OPTS% -d %CLASSDIR% %TOOLS%\bzip2\*.java %TOOLS%\tar\*.java %TOOLS%\zip\*.java %TOOLS%\ant\*.java %TOOLS%\ant\types\*.java %TOOLS%\ant\taskdefs\*.java %TOOLS%\ant\util\regexp\RegexpMatcher.java %TOOLS%\ant\util\regexp\RegexpMatcherFactory.java %TOOLS%\ant\taskdefs\condition\*.java %TOOLS%\ant\taskdefs\compilers\*.java %TOOLS%\ant\types\resources\*.java %TOOLS%\ant\property\*.java
