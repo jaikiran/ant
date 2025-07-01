@@ -1754,6 +1754,9 @@ public class FileUtils {
      */
     public boolean tryHardToDelete(File f, boolean runGC) {
         if (!f.delete()) {
+            if (!f.canWrite() && ON_WINDOWS) {
+                final boolean markedWritable = f.setWritable(true);
+            }
             if (runGC) {
                 System.gc();
             }
